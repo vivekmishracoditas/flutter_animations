@@ -1,5 +1,6 @@
 import 'package:animations/widgets/rotating_container.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CredAppAnimation extends StatelessWidget {
   const CredAppAnimation({super.key});
@@ -32,11 +33,7 @@ class CredAppAnimation extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              color: Colors.white,
-              width: 100,
-              height: 100,
-            )
+            const ShimmerContainer(),
           ],
         ),
       ),
@@ -127,6 +124,32 @@ class CredAppAnimation extends StatelessWidget {
         border: Border.all(
           color: Colors.white, // Set the border color here
           width: 5.0, // Set the border width here
+        ),
+      ),
+    );
+  }
+}
+
+class ShimmerContainer extends StatelessWidget {
+  const ShimmerContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 230,
+      height: 80,
+      color: Colors.yellow,
+      child: Center(
+        child: Shimmer.fromColors(
+          baseColor: Colors.white,
+          highlightColor: Colors.yellow,
+          child: const Text(
+            'Spin',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
     );
